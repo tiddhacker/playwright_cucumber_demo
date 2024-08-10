@@ -26,6 +26,6 @@ function getBrowser(browserName) {
       }
 
       module.exports={
-        browser: getBrowser
+        getBrowser: getBrowser
       }
       

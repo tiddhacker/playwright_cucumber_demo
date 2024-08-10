@@ -1,22 +1,21 @@
-const { Before, After, BeforeAll } = require("@cucumber/cucumber");
+const { Before, After } = require("@cucumber/cucumber");
 const playwright = require("@playwright/test");
 const webDriverHandler =  require('../../common/webDriverHandler');
 const { env } = require("process");
 const path = require("path");
 require('dotenv').config({path: `${process.cwd()}/config/.env.${process.env.env}`});
+const{POManager}=require('../../common/POManager');
 
-Before({tags: "@UI"},async function (){
+Before({tags: "@UI",timeout: 30 * 1000},async function (){
     console.log("Inside before UI");
     console.log(process.env.env);
-    
 
     //to get cli arguments- process.env.browser
-
-    const browser=await webDriverHandler.browser(process.env.browser);
+    const browser=await webDriverHandler.getBrowser(process.env.browser);
     const context= await browser.newContext();
-    page= await context.newPage();
-    await page.goto(process.env.URL); //reading from .env file in root directory
-    
+    this.page= await context.newPage();
+    await this.page.goto(process.env.URL); //reading from .env file in root directory
+    poManager=new POManager(this.page);
 })
 
 After(async function() {
