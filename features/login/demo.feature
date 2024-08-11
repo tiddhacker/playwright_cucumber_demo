@@ -1,7 +1,7 @@
 @UI
 Feature: Test demo
 
-@first
+@firstalone
 Scenario: Registeration form fill
 Given I navigate to dashboard of application
 

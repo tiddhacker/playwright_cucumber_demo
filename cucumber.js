@@ -1,6 +1,9 @@
+const { format } = require("path");
+
 module.exports = {
     default: {
   // removed tags property
+      parallel: 3,
       formatOptions: {
         snippetInterface: 'async-await'
       },
@@ -12,6 +15,8 @@ module.exports = {
         'features/step_definitions/*.js',
         'features/hooks/hooks.js'
       ],
-      parallel: process.env.CI ? 10 : 1
+      format:[
+        'html:cucumber-report.html'
+      ]
     }
   }

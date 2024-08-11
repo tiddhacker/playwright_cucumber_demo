@@ -2,19 +2,17 @@
   "name": "playwright-js-skleton",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
-  "devDependencies": {
-  },
   "dependencies": {
-    "cross-env": "^7.0.3",
-    "dotenv": "^16.4.5",
     "@cucumber/cucumber": "^10.8.0",
     "@playwright/test": "^1.46.0",
-    "@types/node": "^22.1.0"
+    "@types/node": "^22.1.0",
+    "cross-env": "^7.0.3",
+    "cucumber-html-reporter": "^7.1.1",
+    "dotenv": "^16.4.5"
   }
 }
