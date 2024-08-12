@@ -13,7 +13,8 @@ module.exports = {
       dryRun: false,
       require: [
         'features/step_definitions/*.js',
-        'features/hooks/hooks.js'
+        'features/hooks/hooks.js',
+        'features/support/support.js'
       ],
       format:[
         'html:cucumber-report.html'
