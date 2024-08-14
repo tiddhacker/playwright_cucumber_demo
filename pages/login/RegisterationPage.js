@@ -11,21 +11,26 @@ class RegisterationPage extends CommonWebActions{
         super();
         //define all page locators
         this.page=page;
-        this.pageHeader=page.locator("//h2[text()='Register']");
-        this.firstName=page.locator("//input[@placeholder='First Name']");
+        this.pageHeader="//h2[text()='Register']";
+        this.firstName="//input[@placeholder='First Name']";
+        this.selectCountryDropdownBtn="//span[@aria-labelledby='select2-country-container']";
+        this.selectCountryDropdownList="//ul[@id='select2-country-results']/li";
+
     }
 
-    async isLoaded(){
+    async isLoaded(page){
         //these 3 lines to be added in every page
+        this.page=page;
         await this.commonWebActions.waitForNetworkIdle(this.page);
-        await this.commonWebActions.waitForElementToBeVisible(this.pageHeader);
+        await this.commonWebActions.waitForElementToBeVisible(this.page,this.pageHeader);
         console.log("RegisterationPage is loaded..!");
-        // await this.commonWebActions.selectFromDropdown(this.page,this.firstName);
         
     }
 
     async fillRegForm(){
-        await this.commonWebActions.enterValues(this.firstName,"Sounak");
+        await this.commonWebActions.enterValues(this.page,this.firstName,"Sounak");
+        await this.commonWebActions.click(this.page,this.selectCountryDropdownBtn);
+        await this.commonWebActions.selectFromListEquals(this.page,this.selectCountryDropdownList,"Denmark");
     }
 }
 module.exports={RegisterationPage}
